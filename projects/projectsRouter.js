@@ -32,6 +32,14 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.get('/projectActions/:id', (req, res) => {
+  projectsDb.getProjectActions(req.params.id)
+    .then(actions => {
+      res.status(200).json(actions);
+    })
+    .catch(err => res.status(500).json({ error: "The projects could not be retrieved. "}))
+});
+
 
 // router.get('/api/users/posts/:userId', (req, res) => {
 //   const { userId } = req.params;
